@@ -1,0 +1,17 @@
+{
+    "name": "borisguery/inflexible",
+    "description": "Collection of Inflector for string, date, numbers, etc.",
+    "authors": [
+        {
+            "name": "Boris Guery",
+            "email": "guery.b@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+
+    },
+    "autoload": {
+        "psr-0": { "Inflexible": "src/" }
+    }
+}
