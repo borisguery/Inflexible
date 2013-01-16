@@ -11,35 +11,59 @@ use Inflexible\InflectorInterface;
  */
 class Relative implements InflectorInterface
 {
-    private $value;
+    private $seconds;
     private $relativeTo;
 
     private $unitsMap = array(
-        array('s', 'second', 'seconds'),
-        array('m', 'minute', 'minutes'),
-        array('h', 'hour',   'hours'),
-        array('d', 'day',    'days'),
-        array('w', 'week',   'weeks'),
-        array('o', 'month',  'months'), // we used the second letter of the word month to avoid conflicts with minutes
-        array('y', 'year',   'years'),
+        array(31536000, 'year'  ),
+        array( 2628600, 'month' ),
+        array(  604800, 'week'  ),
+        array(   86400, 'day'   ),
+        array(    3600, 'hour'  ),
+        array(      60, 'minute'),
+        array(       1, 'second'),
     );
 
     /**
-     * Value may be either a DateTime instance, an integer in seconds since Unix Epoch,
-     * or valid relative array including correct unit
+     * Value may be either a DateTime instance or an integer in seconds
      *
-     * @param DateTime|integer|array $value
-     * @param DateTime|integer|array $relativeTo
+     * $relativeTo may be either a DateTime instance or a boolean
+     * If sets to true, the current DateTime is used
+     *
+     * @param DateTime|integer $value
+     * @param DateTime|boolean $relativeTo
      */
     public function __construct($value, $relativeTo = null)
     {
-        $this->value      = $value;
+        if ($value instanceof DateTime) {
+            $this->seconds = $value->format('U');
+        } else {
+            $this->seconds = $value;
+        }
+
         $this->relativeTo = $relativeTo;
     }
 
     public function transform()
     {
 
+        if (null !== $this->relativeTo) {
+            $relativeTo = (true === $this->relativeTo) ? new DateTime('now') : $this->relativeTo;
+
+            $value = $relativeTo->format('U') - $this->seconds;
+        } else {
+            $value = $this->seconds;
+        }
+
+        foreach ($this->unitsMap as $map) {
+            list($seconds, $unit) = $map;
+            if (0.0 !== ($result = floor($value / $seconds))) {
+
+                break;
+            }
+        }
+
+        return array($result, $unit);
     }
 
     public function reverseTransform()

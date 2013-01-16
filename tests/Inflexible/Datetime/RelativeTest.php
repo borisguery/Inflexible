@@ -17,6 +17,20 @@ class RelativeTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedResult, $inflector->transform());
     }
 
+    /**
+     * @dataProvider getTestDataWithRelativeDatetime
+     *
+     * @param $inputValue
+     * @param $relativeTo
+     * @param $expectedResult
+     */
+    public function testTransformWithARelativeDateTime($inputValue, $relativeTo, $expectedResult)
+    {
+        $inflector = new Relative($inputValue, $relativeTo);
+
+        $this->assertEquals($expectedResult, $inflector->transform());
+    }
+
     public function getTestData()
     {
         return array(
@@ -36,6 +50,17 @@ class RelativeTest extends \PHPUnit_Framework_TestCase
             array(86400 * 30,  array(4,  'week')),
             array(86400 * 31,  array(1,  'month')),
             array(86400 * 365, array(1,  'year')),
+        );
+    }
+
+    public function getTestDataWithRelativeDatetime()
+    {
+        return array(
+            array(new \DateTime('2013-01-10T00:00:50'), new \DateTime('2013-01-10T00:01:00'), array(10, 'second')),
+            array(new \DateTime('2013-01-10T00:00:50'), new \DateTime('2013-01-10T00:01:50'), array(1,  'minute')),
+            array(new \DateTime('2013-01-10T00:00:50'), new \DateTime('2013-01-16T00:01:50'), array(6,  'day')),
+            array(new \DateTime('2013-01-10'), new \DateTime('2013-01-17'), array(1, 'week')),
+            array(new \DateTime('2013-01-10'), new \DateTime('2013-02-10'), array(1, 'month')),
         );
     }
 }
