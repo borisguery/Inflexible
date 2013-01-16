@@ -1,6 +1,6 @@
 <?php
 
-namespace Inflexible\Word;
+namespace Inflexible\String;
 
 class DenamespaceTest extends \PHPUnit_Framework_TestCase
 {
