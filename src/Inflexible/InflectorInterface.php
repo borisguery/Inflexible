@@ -7,7 +7,4 @@ namespace Inflexible;
  */
 interface InflectorInterface
 {
-    public function transform();
-
-    public function reverseTransform();
 }
