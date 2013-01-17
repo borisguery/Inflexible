@@ -17,6 +17,7 @@ use Inflexible\Number\Textualize;
 use Inflexible\String\Camelize;
 use Inflexible\String\Denamespace;
 use Inflexible\String\Humanize;
+use Inflexible\String\NamespaceOnly;
 use Inflexible\String\Slugify;
 
 /**
@@ -52,6 +53,11 @@ class Inflexible
     public static function denamespace($string)
     {
         return Denamespace::inflect($string);
+    }
+
+    public static function namespaceOnly($string)
+    {
+        return NamespaceOnly::inflect($string);
     }
 
     public static function humanize($string)
