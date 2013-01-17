@@ -68,7 +68,7 @@ class Textualize
     /**
      * Returns a textual representation of a number
      *
-     * @param integer $number
+     * @param  integer                   $number
      * @return string
      * @throws \InvalidArgumentException
      */
@@ -109,7 +109,7 @@ class Textualize
     private static function parseNumber($number)
     {
         $tmp = array();
-        
+
         if (isset($number[2])) {
             if (isset(self::$onesNumbers[$number[2]])) {
                 $tmp['hundreds'] = self::$onesNumbers[$number[2]] . ' Hundred';

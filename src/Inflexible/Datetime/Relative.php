@@ -33,8 +33,8 @@ class Relative
      * $relativeTo may be either a DateTime instance or a boolean
      * If sets to true, the current DateTime is used
      *
-     * @param DateTime|integer $value
-     * @param DateTime|boolean $relativeTo
+     * @param  DateTime|integer $value
+     * @param  DateTime|boolean $relativeTo
      * @return array
      */
     public static function inflect($value, $relativeTo = null)
