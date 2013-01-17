@@ -29,9 +29,9 @@ class Inflexible
         return Relative::inflect($value, $relativeTo);
     }
 
-    public static function humanByte($bytes)
+    public static function humanByte($bytes, $precision = 2)
     {
-        return HumanByte::inflect($bytes);
+        return HumanByte::inflect($bytes, $precision);
     }
 
     public static function ordinalize($number)

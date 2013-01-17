@@ -15,7 +15,7 @@ namespace Inflexible\Number;
  */
 class HumanByte
 {
-    public static function inflect($bytes)
+    public static function inflect($bytes, $precision = 2)
     {
         $units = array('B', 'KB', 'MB', 'GB', 'TB');
         $bytes = max($bytes, 0);
@@ -23,6 +23,6 @@ class HumanByte
         $pow = min($pow, count($units) - 1);
         $bytes /= (1 << (10 * $pow));
 
-        return sprintf('%4.02f %s', round($bytes, 2), $units[$pow]);
+        return sprintf('%4.02f %s', round($bytes, (int) $precision), $units[$pow]);
     }
 }
