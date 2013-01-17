@@ -15,6 +15,12 @@ namespace Inflexible\String;
  */
 class Humanize
 {
+    /**
+     * Converts CamelCased word and underscore to space to return a readable string
+     *
+     * @param $value
+     * @return string
+     */
     public static function inflect($value)
     {
         $result = strtolower(preg_replace('/(?<=\w)([A-Z])/', '_\\1', $value));
