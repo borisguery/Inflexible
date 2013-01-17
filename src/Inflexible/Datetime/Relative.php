@@ -3,18 +3,13 @@
 namespace Inflexible\Datetime;
 
 use DateTime;
-use Inflexible\Exception\MethodNotImplementedException;
-use Inflexible\InflectorInterface;
 
 /**
  * @author Boris Guéry <guery.b@gmail.com>
  */
-class Relative implements InflectorInterface
+class Relative
 {
-    private $seconds;
-    private $relativeTo;
-
-    private $unitsMap = array(
+    private static $unitsMap = array(
         array(31536000, 'year'  ),
         array( 2628600, 'month' ),
         array(  604800, 'week'  ),
@@ -32,30 +27,25 @@ class Relative implements InflectorInterface
      *
      * @param DateTime|integer $value
      * @param DateTime|boolean $relativeTo
+     * @return array
      */
-    public function __construct($value, $relativeTo = null)
+    public static function inflect($value, $relativeTo = null)
     {
         if ($value instanceof DateTime) {
-            $this->seconds = $value->format('U');
+            $seconds = $value->format('U');
         } else {
-            $this->seconds = $value;
+            $seconds = $value;
         }
 
-        $this->relativeTo = $relativeTo;
-    }
+        if (null !== $relativeTo) {
+            $relativeTo = (true === $relativeTo) ? new DateTime('now') : $relativeTo;
 
-    public function transform()
-    {
-
-        if (null !== $this->relativeTo) {
-            $relativeTo = (true === $this->relativeTo) ? new DateTime('now') : $this->relativeTo;
-
-            $value = $relativeTo->format('U') - $this->seconds;
+            $value = $relativeTo->format('U') - $seconds;
         } else {
-            $value = $this->seconds;
+            $value = $seconds;
         }
 
-        foreach ($this->unitsMap as $map) {
+        foreach (self::$unitsMap as $map) {
             list($seconds, $unit) = $map;
             if (0.0 !== ($result = floor($value / $seconds))) {
 
@@ -64,10 +54,5 @@ class Relative implements InflectorInterface
         }
 
         return array($result, $unit);
-    }
-
-    public function reverseTransform()
-    {
-        throw new MethodNotImplementedException();
     }
 }

@@ -2,9 +2,7 @@
 
 namespace Inflexible\String;
 
-use Inflexible\AbstractInflector;
-
-class Camelize extends AbstractInflector
+class Camelize
 {
     /**
      * Converts a word like "foo_bar" to "FooBar".

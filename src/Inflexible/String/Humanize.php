@@ -2,9 +2,7 @@
 
 namespace Inflexible\String;
 
-use Inflexible\AbstractInflector;
-
-class Humanize extends AbstractInflector
+class Humanize
 {
     public static function inflect($value)
     {

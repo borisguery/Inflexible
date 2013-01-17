@@ -2,9 +2,7 @@
 
 namespace Inflexible\Number;
 
-use Inflexible\AbstractInflector;
-
-class HumanByte extends AbstractInflector
+class HumanByte
 {
     public static function inflect($bytes)
     {

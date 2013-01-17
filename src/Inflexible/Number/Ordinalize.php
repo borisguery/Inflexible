@@ -2,31 +2,28 @@
 
 namespace Inflexible\Number;
 
-use Inflexible\AbstractInflector;
-
-class Ordinalize extends AbstractInflector
+class Ordinalize
 {
     public static function inflect($value)
     {
         if (in_array(($value % 100), range(11, 13))) {
-
-            $result = $value.'th';
+            $result = sprintf('%sth', $value);
         } else {
             switch (($value % 10)) {
                 case 1:
-                    $result = $value.'st';
+                    $result = sprintf('%sst', $value);
                     break;
 
                 case 2:
-                    $result = $value.'nd';
+                    $result = sprintf('%snd', $value);
                     break;
 
                 case 3:
-                    $result = $value.'rd';
+                    $result = sprintf('%srd', $value);
                     break;
 
                 default:
-                    $result = $value.'th';
+                    $result = sprintf('%sth', $value);
                     break;
             }
         }

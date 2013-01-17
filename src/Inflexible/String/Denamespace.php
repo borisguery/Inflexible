@@ -2,9 +2,7 @@
 
 namespace Inflexible\String;
 
-use Inflexible\AbstractInflector;
-
-class Denamespace extends AbstractInflector
+class Denamespace
 {
     /**
      * Returns only the class name

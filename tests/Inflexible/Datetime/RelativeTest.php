@@ -12,9 +12,7 @@ class RelativeTest extends \PHPUnit_Framework_TestCase
      */
     public function testTransform($inputValue, $expectedResult)
     {
-        $inflector = new Relative($inputValue);
-
-        $this->assertEquals($expectedResult, $inflector->transform());
+        $this->assertEquals($expectedResult, Relative::inflect($inputValue));
     }
 
     /**
@@ -26,9 +24,7 @@ class RelativeTest extends \PHPUnit_Framework_TestCase
      */
     public function testTransformWithARelativeDateTime($inputValue, $relativeTo, $expectedResult)
     {
-        $inflector = new Relative($inputValue, $relativeTo);
-
-        $this->assertEquals($expectedResult, $inflector->transform());
+        $this->assertEquals($expectedResult, Relative::inflect($inputValue, $relativeTo));
     }
 
     public function getTestData()
