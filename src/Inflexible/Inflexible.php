@@ -1,18 +1,66 @@
 <?php
+/*
+ * This file is part of the Inflexible package.
+ *
+ * (c) Boris Guéry <http://borisguery.com/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Inflexible;
+
+use Inflexible\Datetime\Relative;
+use Inflexible\Number\HumanByte;
+use Inflexible\Number\Ordinalize;
+use Inflexible\Number\Textualize;
+use Inflexible\String\Camelize;
+use Inflexible\String\Denamespace;
+use Inflexible\String\Humanize;
+use Inflexible\String\Slugify;
 
 /**
  * @author Boris Guéry <guery.b@gmail.com>
  */
-use Inflexible\Datetime\Relative;
-
-class Inflexible {
-
-    public static function relativeDatetime($value)
+class Inflexible
+{
+    public static function relativeDatetime($value, $relativeTo = null)
     {
-        $i = new Relative($value);
+        return Relative::inflect($value, $relativeTo);
+    }
 
-        return $i->transform();
+    public static function humanByte($bytes)
+    {
+        return HumanByte::inflect($bytes);
+    }
+
+    public static function ordinalize($number)
+    {
+        return Ordinalize::inflect($number);
+    }
+
+    public static function textualize($number)
+    {
+        return Textualize::inflect($number);
+    }
+
+    public static function camelize($string)
+    {
+        return Camelize::inflect($string);
+    }
+
+    public static function denamespace($string)
+    {
+        return Denamespace::inflect($string);
+    }
+
+    public static function humanize($string)
+    {
+        return Humanize::inflect($string);
+    }
+
+    public static function slugify($string, array $options = array())
+    {
+        return Slugify::inflect($string, $options);
     }
 }
