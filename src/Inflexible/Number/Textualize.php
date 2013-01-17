@@ -49,17 +49,17 @@ class Textualize
     );
 
     private static $otherNumbers = array(
-        1  => 'Thousand',
-        2  => 'Million',
-        3  => 'Billion',
-        4  => 'Trillion',
-        5  => 'Quadrillion',
-        6  => 'Quintillion',
-        7  => 'Sextillion',
-        8  => 'Septillion',
-        9  => 'Octillion',
-        10  => 'Nonillion',
-        11 => 'Decillion',
+        0  => 'Thousand',
+        1  => 'Million',
+        2  => 'Billion',
+        3  => 'Trillion',
+        4  => 'Quadrillion',
+        5  => 'Quintillion',
+        6  => 'Sextillion',
+        7  => 'Septillion',
+        8  => 'Octillion',
+        9  => 'Nonillion',
+        10 => 'Decillion',
     );
 
     /**
@@ -88,6 +88,8 @@ class Textualize
 
         $finalNumber = array();
         foreach ($chunks as $k => $v) {
+            // Keep a consistent map, so we fix the index
+            $k = $k - 1;
             ksort($v);
             $temp = trim(self::parseNumber(implode('', $v)));
             if ($temp != '') {
