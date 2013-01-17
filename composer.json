@@ -1,15 +1,19 @@
 {
     "name": "borisguery/inflexible",
-    "description": "Collection of Inflector for string, date, numbers, etc.",
+    "homepage": "http://github.com/borisguery/Inflexible",
+    "description": "Collection of Inflectors for string, date, numbers, etc.",
+    "keywords": ["inflection", "inflector", "string", "number", "date", "utility"],
     "authors": [
         {
             "name": "Boris Guery",
             "email": "guery.b@gmail.com"
         }
     ],
+    "license": "WTFL",
+    "type": "library",
     "minimum-stability": "dev",
     "require": {
-
+        "php": ">=5.3.2"
     },
     "autoload": {
         "psr-0": { "Inflexible": "src/" }
