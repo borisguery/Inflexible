@@ -10,6 +10,9 @@
 
 namespace Inflexible\Number;
 
+/**
+ * @author Boris Guéry <guery.b@gmail.com>
+ */
 class HumanByte
 {
     public static function inflect($bytes)

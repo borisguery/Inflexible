@@ -10,6 +10,9 @@
 
 namespace Inflexible\String;
 
+/**
+ * @author Boris Guéry <guery.b@gmail.com>
+ */
 class Denamespace
 {
     /**

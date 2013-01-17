@@ -10,6 +10,9 @@
 
 namespace Inflexible\String;
 
+/**
+ * @author Boris Guéry <guery.b@gmail.com>
+ */
 class Slugify
 {
     public static function inflect($value, array $options = array())

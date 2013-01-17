@@ -10,6 +10,9 @@
 
 namespace Inflexible\Number;
 
+/**
+ * @author Boris Guéry <guery.b@gmail.com>
+ */
 class Textualize
 {
     private static $onesNumbers = array(

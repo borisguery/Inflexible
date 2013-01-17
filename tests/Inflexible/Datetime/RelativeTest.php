@@ -10,6 +10,9 @@
 
 namespace Inflexible\Datetime;
 
+/**
+ * @author Boris Guéry <guery.b@gmail.com>
+ */
 class RelativeTest extends \PHPUnit_Framework_TestCase
 {
     /**

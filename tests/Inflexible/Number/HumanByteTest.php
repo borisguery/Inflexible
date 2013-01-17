@@ -10,6 +10,9 @@
 
 namespace Inflexible\Number;
 
+/**
+ * @author Boris Guéry <guery.b@gmail.com>
+ */
 class HumanByteTest extends \PHPUnit_Framework_TestCase
 {
     /**
