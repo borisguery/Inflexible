@@ -1,4 +1,4 @@
-Inflexible  [![Build Status](https://travis-ci.org/borisguery/Inflexible.png)](https://travis-ci.org/borisguery/Inflexible)
+Inflexible  [![Build Status](https://travis-ci.org/borisguery/Inflexible.png?branch=master)](https://travis-ci.org/borisguery/Inflexible)
 =======================
 
 Table of contents
