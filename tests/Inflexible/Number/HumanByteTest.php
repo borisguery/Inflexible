@@ -38,7 +38,6 @@ class HumanByteTest extends \PHPUnit_Framework_TestCase
             array(196608,        '192.00 KB'),
             array(1048576,       '1.00 MB'),
             array(1073741824,    '1.00 GB'),
-            array(1099511627776, '1.00 TB'),
         );
     }
 }
