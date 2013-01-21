@@ -13,7 +13,8 @@
     "type": "library",
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.3.2"
+        "php": ">=5.3.2",
+        "doctrine/inflector": "dev-master"
     },
     "autoload": {
         "psr-0": { "Inflexible": "src/" }

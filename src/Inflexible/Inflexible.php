@@ -10,6 +10,7 @@
 
 namespace Inflexible;
 
+use Doctrine\Common\Inflector\Inflector as DoctrineCommonInflector;
 use Inflexible\Datetime\Relative;
 use Inflexible\Number\HumanByte;
 use Inflexible\Number\Ordinalize;
@@ -69,4 +70,21 @@ class Inflexible
     {
         return Slugify::inflect($string, $options);
     }
+
+    // @codeCoverageIgnoreStart
+    public static function pluralize($word)
+    {
+        return DoctrineCommonInflector::pluralize($word);
+    }
+
+    public function singularize($word)
+    {
+        return DoctrineCommonInflector::singularize($word);
+    }
+
+    public function tableize($word)
+    {
+        return DoctrineCommonInflector::tableize($word);
+    }
+    // @codeCoverageIgnoreEnd
 }
