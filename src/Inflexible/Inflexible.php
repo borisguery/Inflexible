@@ -14,12 +14,13 @@ use Doctrine\Common\Inflector\Inflector as DoctrineCommonInflector;
 use Inflexible\Datetime\Relative;
 use Inflexible\Number\HumanByte;
 use Inflexible\Number\Ordinalize;
-use Inflexible\Number\Shorten;
+use Inflexible\Number\Shorten as NumberShortener;
 use Inflexible\Number\Textualize;
 use Inflexible\String\Camelize;
 use Inflexible\String\Denamespace;
 use Inflexible\String\Humanize;
 use Inflexible\String\NamespaceOnly;
+use Inflexible\String\Shorten as StringShortener;
 use Inflexible\String\Slugify;
 
 /**
@@ -72,9 +73,14 @@ class Inflexible
         return Slugify::inflect($string, $options);
     }
 
-    public static function shorten($number, $roundMode = PHP_ROUND_HALF_UP)
+    public static function shortenNumber($number, $roundMode = PHP_ROUND_HALF_UP)
     {
-        return Shorten::inflect($number, $roundMode);
+        return NumberShortener::inflect($number, $roundMode);
+    }
+
+    public static function shortenString($string, $maxLength = 80, $affix = '', $affixPosition = StringShortener::AFFIX_POSITION_MIDDLE)
+    {
+        return StringShortener::inflect($string, $maxLength, $affix, $affixPosition);
     }
 
     // @codeCoverageIgnoreStart
