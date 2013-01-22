@@ -13,7 +13,8 @@ Table of contents
    2. [Number](#number)
      1. [HumanByte](#humanbyte)
      2. [Ordinalize](#ordinalize)
-     3. [Textualize](#textualize)
+     3. [Shorten](#shorten)
+     4. [Textualize](#textualize)
    3. [String](#string)
      1. [Camelize](#camelize)
      2. [Denamespace](#denamespace)
@@ -130,6 +131,21 @@ Inflexible::ordinalize(1);
 ```php
 Inflexible::ordinalize(13);
 // 13th
+```
+
+##### Shorten
+
+Formats a number using the SI units (k, M, G, etc.):
+
+```php
+Inflexible::shorten(100);
+// array(100, null)
+// No units for number < 1000
+```
+
+```php
+Inflexible::shorten(1523);
+// 1k
 ```
 
 ##### Textualize

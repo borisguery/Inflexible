@@ -14,6 +14,7 @@ use Doctrine\Common\Inflector\Inflector as DoctrineCommonInflector;
 use Inflexible\Datetime\Relative;
 use Inflexible\Number\HumanByte;
 use Inflexible\Number\Ordinalize;
+use Inflexible\Number\Shorten;
 use Inflexible\Number\Textualize;
 use Inflexible\String\Camelize;
 use Inflexible\String\Denamespace;
@@ -69,6 +70,11 @@ class Inflexible
     public static function slugify($string, array $options = array())
     {
         return Slugify::inflect($string, $options);
+    }
+
+    public static function shorten($number, $roundMode = PHP_ROUND_HALF_UP)
+    {
+        return Shorten::inflect($number, $roundMode);
     }
 
     // @codeCoverageIgnoreStart
